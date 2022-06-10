@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Change dir to home for all operations
+cd ~
+
 #Color set
 bold_bluebackground="\e[1;44;4m"
 black_on_green="\e[30;42m"
