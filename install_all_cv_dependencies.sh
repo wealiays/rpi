@@ -93,6 +93,13 @@ if [ -f /etc/os-release ] && grep -q "raspbian" /etc/os-release; then
         sudo python3 get-pip.py
         sudo rm -rf ~/.cache/pip
 
+	#Install GitHub CLI for cred caching
+        echo "${bold_bluebackground}******** Installing GitHub CLI ********${endcolor}"
+        curl -fsSl https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+        sudo apt update
+        sudo apt install gh
+
         # Install cmake
         # cmake 3.13 or higher is required to build OpenVINO
         echo "${bold_bluebackground}******** Checking cmake ********${endcolor}"
