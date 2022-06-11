@@ -14,12 +14,12 @@ if [ -f /etc/os-release ] && grep -q "raspbian" /etc/os-release; then
         echo "${bold_bluebackground}******** Removing extra packages ********${endcolor}"
         sudo apt-get purge -y wolfram-engine
         sudo apt-get purge -y libreoffice*
-        sudo apt-get clean
-        sudo apt-get autoremove
+        sudo apt-get -y clean
+        sudo apt-get -y autoremove
 
         # Update and upgrade any existing packages
         echo "${bold_bluebackground}******** Updating current packages********${endcolor}"
-        sudo apt update && sudo apt upgrade
+        sudo apt-get -y update && sudo apt-get -y upgrade
 
         # Install OpenCV Dependencies
         echo "${bold_bluebackground}******** Checking OpenCV Dependencies ********${endcolor}"
@@ -55,7 +55,7 @@ if [ -f /etc/os-release ] && grep -q "raspbian" /etc/os-release; then
         # Install OpenVino Dependencies
         echo "${bold_bluebackground}******** Checking OpenVINO Dependencies ********${endcolor}"
 
-                sudo -E apt update
+                sudo -E apt-get -y update
                 sudo -E apt-get install -y \
                                 build-essential \
                                 curl \
