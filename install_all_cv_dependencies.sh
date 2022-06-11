@@ -49,7 +49,8 @@ if [ -f /etc/os-release ] && grep -q "raspbian" /etc/os-release; then
                         libqt5webkit5 \
                         libqt5test5 \
                         python3-pyqt5 \
-                        python3-dev
+                        python3-dev \
+			python3-scipy
 
         # Install OpenVino Dependencies
         echo "${bold_bluebackground}******** Checking OpenVINO Dependencies ********${endcolor}"
