@@ -6,7 +6,7 @@ cd ~
 #Color set
 bold_bluebackground="\e[1;44;4m"
 black_on_green="\e[30;42m"
-red_background = "\e[41m"
+red_background="\e[41m"
 endcolor="\e[0m"
 
 if [ -f /etc/os-release ] && grep -q "raspbian" /etc/os-release; then
@@ -110,7 +110,7 @@ if [ -f /etc/os-release ] && grep -q "raspbian" /etc/os-release; then
         current_cmake_version=$(cmake --version | sed -ne 's/[^0-9]*\(\([0-9]\.\)\{0,4\}[0-9][^.]\).*/\1/p')
         required_cmake_ver=3.22
         if [ ! "$(printf '%s\n' "$required_cmake_ver" "$current_cmake_version" | sort -V | head -n1)" = "$required_cmake_ver" ]; then
-                echo "${bold_bluebackground}Installing cmake...."
+                echo "${bold_bluebackground}Installing cmake....${endcolor}"
                 wget "https://github.com/Kitware/CMake/releases/download/v3.22.5/cmake-3.22.5.tar.gz"
                 tar xf cmake-3.22.5.tar.gz
                 (cd cmake-3.22.5 && ./bootstrap --parallel="$(nproc --all)" && make --jobs="$(nproc --all)" && sudo make install)
